@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import "./Hero.scss";
 import $ from "jquery";
+import axios from 'axios'
+import domain from '../../util/domain'
 
 function Hero() {
   const [data, setData] = useState([]);
@@ -48,6 +50,16 @@ function Hero() {
       $this.closest(".box").addClass("highlight");
     });
   });
+
+  async function addPicks(e) {
+    e.preventDefault();
+
+    const picksData = {
+      picks: array ? array : undefined,
+    }
+    
+    axios.post(`${domain}/picks/`, picksData)
+  }
 
   return (
     <div className="hero">
@@ -125,6 +137,8 @@ function Hero() {
       <button onClick={handleSubmit} className="submit-btn">
         SUBMIT
       </button>
+
+      <button onClick={addPicks}>ADD PICKS</button>
       <p> {array}</p>
     </div>
   );
