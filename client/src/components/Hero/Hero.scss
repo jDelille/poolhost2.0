@@ -1,0 +1,107 @@
+.hero {
+  width: 100%;
+  padding-top: 2rem;
+  button {
+    position: absolute;
+    bottom: 0;
+  }
+  .games-container {
+    // game container stuff
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+
+    .games-box {
+      // each game box stuff
+      width: 50%;
+      display: flex;
+      margin: 0 auto;
+      align-items: center;
+      .game {
+        height: 50%;
+        width: 100%;
+        display: flex;
+        align-items: center;
+        flex-shrink: 0;
+        padding: 1rem;
+        .box {
+          height: 100%;
+          border: 1px solid lightgray;
+          width: 100%;
+          display: flex;
+          align-items: center;
+          justify-content: space-evenly;
+          padding: 1rem;
+          box-shadow: 0 2px 4px 0 rgba(0,0,0,.2);
+          border-radius: 5px;
+          &:hover {
+           box-shadow: none;
+           transition: all 100ms ease-in-out;
+          }
+          cursor: pointer;
+          input {
+           display: none;
+          }
+          
+          .logo {
+           height: 100%;
+           display: flex;
+           align-items: center;
+           width: 20%;
+           justify-content: center;
+           margin-right: 0.5rem;
+           .team-logo{
+            max-width: 50px;
+           }
+          }
+          .team-id {
+           height: 100%;
+           display: flex;
+           flex-direction: column;
+           justify-content: center;
+           width: 55%;
+           p {
+            font-size: 0.9rem;
+           }
+          }
+          .record {
+           height: 100%;
+           display: flex;
+           justify-content: center;
+           align-items: center;
+           p {
+            font-size: 0.85rem;
+           }
+          }
+          
+        }
+
+        .q {
+          background: #a3bada;
+        }
+        .highlight {
+          background: #ffffaa;
+        }
+
+        .game-info {
+          width: 30%;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          font-weight: 500;
+          margin: 0 1rem;
+          .game-time {
+            font-size: 0.85rem;
+          }
+        }
+      }
+
+      .leaders {
+        width: 33%;
+        height: 100%;
+      }
+
+      
+    }
+  }
+}
