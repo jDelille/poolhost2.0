@@ -21,6 +21,8 @@ function Gamebar() {
     })
   },[])
 
+  console.log(data)
+
   function scrollGamebarForward() {
     document.getElementById("container").scrollLeft += 820;
   }
@@ -29,7 +31,6 @@ function Gamebar() {
     document.getElementById("container").scrollLeft -= 820;
   }
 
-  console.log(data);
 
   return (
     <div className="gamebar">

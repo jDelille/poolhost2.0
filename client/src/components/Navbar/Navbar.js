@@ -13,6 +13,8 @@ function Navbar() {
     await getUser();
   }
 
+ 
+
   return (
     <div className="navbar">
       <div className="brand">
@@ -25,7 +27,7 @@ function Navbar() {
         <Link to="/" className="link">
           Picks
         </Link>
-        <Link to="/" className="link">
+        <Link to="/pool" className="link">
           Pool
         </Link>
         <Link to="/" className="link">

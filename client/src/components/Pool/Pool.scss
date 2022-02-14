@@ -1,0 +1,44 @@
+.labels {
+  width: 80%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 2rem auto;
+  .label-box {
+    width: 85px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    border: 1px solid lightgray;
+  }
+}
+
+.all-picks {
+  width: 80%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 2rem auto;
+  flex-direction: column;
+  .user-pick {
+   width: 80%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 2rem auto;
+  
+  }
+  .picked-logo {
+    width: 85px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    border: 1px solid lightgray;
+    
+    .logo {
+     max-width: 50px;
+    }
+  }
+}

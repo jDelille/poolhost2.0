@@ -5,9 +5,14 @@ import Register from "./components/Auth/Register";
 import Hero from "./components/Hero/Hero";
 import Navbar from "./components/Navbar/Navbar";
 import Gamebar from './components/Gamebar/Gamebar'
+import Pool from './components/Pool/Pool'
+
 
 function Router() {
+ 
  return (
+  
+
   <BrowserRouter>
    <Navbar />
    <Gamebar />
@@ -21,8 +26,12 @@ function Router() {
     <Route path='/register'>
      <Register />
     </Route>
+    <Route path="/pool">
+     <Pool />
+    </Route>
    </Switch>
   </BrowserRouter>
+  
  )
 }
 

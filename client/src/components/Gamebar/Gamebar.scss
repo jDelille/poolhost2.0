@@ -1,8 +1,9 @@
 .gamebar {
  width: 100%;
  border: 1px solid white;
- box-shadow: -4px 0px 12px 0px rgba(0,0,0,.2);
- position: relative;
+ box-shadow: -4px 0px 3px 0px rgba(0,0,0,.2);
+ 
+ z-index: 9999;
  display: flex;
  justify-content: center;
  background-color: #ffffff;

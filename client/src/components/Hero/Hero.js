@@ -1,11 +1,59 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import "./Hero.scss";
 import $ from "jquery";
-import axios from 'axios'
-import domain from '../../util/domain'
-
+import axios from "axios";
+import domain from "../../util/domain";
+import ErrorMessage from "../misc/ErrorMessage";
+import UserContext from "../../context/UserContext";
+import MakePicks from "../Picks/MakePicks";
+import ShowPicks from "../Picks/ShowPicks";
 function Hero() {
   const [data, setData] = useState([]);
+
+  const { user } = useContext(UserContext);
+
+  // EDIT PICKS
+  const [editPickData, setEditPickData] = useState(null);
+  const [picksEditorOpen, setPicksEditorOpen] = useState(false);
+
+  function editPicks(picksData) {
+    setEditPickData(picksData);
+    setPicksEditorOpen(true);
+  }
+
+  // GET PICKS
+  const [picks, setPicks] = useState([]);
+
+  
+  useEffect(() => {
+    if (!user) setPicks([]);
+    else getPicks()
+  },[user])
+
+  async function getPicks() {
+    const pickRes = await axios.get(`${domain}/picks/`);
+    setPicks(pickRes.data);
+  }
+
+  // RENDER PICKS
+
+  function renderPicks() {
+    let sortedPicks = [...picks];
+    sortedPicks = sortedPicks.sort((a, b) => {
+      return new Date(b.createdAt) - new Date(a.createdAt);
+    });
+    return sortedPicks.map((picks, i) => {
+      return (
+        <ShowPicks
+          key={i}
+          picks={picks}
+          getPicks={getPicks}
+          editPicks={editPicks}
+          data={data}
+        />
+      );
+    });
+  }
 
   useEffect(() => {
     fetch("/games")
@@ -15,9 +63,11 @@ function Hero() {
       });
   }, []);
 
-  console.log(data);
 
-  const [pick, setPick] = useState([]);
+  let [pick, setPick] = useState([]);
+  const [errorMessage, setErrorMessage] = useState(null);
+
+  
 
   function handleSubmit() {
     let radios = document.querySelectorAll("#radio");
@@ -29,8 +79,34 @@ function Hero() {
     }
   }
 
+ 
+  async function addPicks() {
+    const picksData = {
+      picks: pick,
+      user: user.email
+    };
+    try {
+      axios.post(`${domain}/picks/`, picksData);
+    } catch (err) {
+      if (err.response) {
+        if (err.response.data.errorMessage) {
+          setErrorMessage(err.response.data.errorMessage);
+        }
+      }
+    }
+  }
+
   let array = [...new Set(pick)];
-  console.log(array);
+
+
+  function resetPicks() {
+      
+  }
+
+ 
+
+
+
 
   const [selected, setSelected] = useState(false);
 
@@ -51,95 +127,25 @@ function Hero() {
     });
   });
 
-  async function addPicks(e) {
-    e.preventDefault();
 
-    const picksData = {
-      picks: array ? array : undefined,
-    }
-    
-    axios.post(`${domain}/picks/`, picksData)
-  }
 
   return (
     <div className="hero">
-      <div className="games-container">
-        {data.map((item, index) => {
-          return (
-            <div className="games-box" key={index}>
-              <div className="game">
-                {/* HOME SIDE */}
-                <label className="box">
-                  <input
-                    type="radio"
-                    name={item.gameId}
-                    id="radio"
-                    value={item.homeTeam.teamTricode}
-                  />
-                  <div className="logo">
-                  <img
-                    src={`../icons/${item.homeTeam.teamTricode}.svg`}
-                    className='team-logo'
-                    alt=""
-                  />
-                  </div>
-                  
-                  <div className="team-id">
-                    <p> {item.homeTeam.teamCity}</p>
-                    <p> Home </p>
-                  </div>
-                  <div className="record">
-                    <p>
-                      ({item.homeTeam.wins} - {item.homeTeam.losses})
-                    </p>
-                  </div>
-                </label>
-
-                {/* GAME INFO */}
-                <div className="game-info">
-                  <p className="game-time">{item.gameStatusText}</p>
-                  <p>{item.seriesSummary}</p>
-                </div>
-
-                {/* AWAY SIDE */}
-                <label className="box">
-                  <div className="logo">
-                    <img
-                      src={`../icons/${item.awayTeam.teamTricode}.svg`}
-                      className="team-logo"
-                      alt=""
-                    />
-                  </div>
-
-                  <input
-                    type="radio"
-                    name={item.gameId}
-                    id="radio"
-                    value={item.awayTeam.teamTricode}
-                    className="radio"
-                  />
-                  <div className="team-id">
-                    <p> {item.awayTeam.teamCity}</p>
-                    <p> Away </p>
-                  </div>
-                  <div className="record">
-                    <p>
-                      ({item.awayTeam.wins} - {item.awayTeam.losses})
-                    </p>
-                  </div>
-                </label>
-              </div>
-              <div className="leaders"></div>
-            </div>
-          );
-        })}
-      </div>
-      <button onClick={handleSubmit} className="submit-btn">
-        SUBMIT
-      </button>
-
-      <button onClick={addPicks}>ADD PICKS</button>
-      <p> {array}</p>
+      {picks.length > 0
+        ? renderPicks()
+        : user && (
+            <>
+              <p> No picks yet </p>
+              <MakePicks
+                data={data}
+                handleSubmit={handleSubmit}
+                array={array}
+                addPicks={addPicks}
+                resetPicks={resetPicks}
+                pick={pick}
+              />
+            </>
+          )}
     </div>
   );
 }

@@ -22,6 +22,9 @@ app.use(
 );
 app.use(cookieParser());
 
+app.use("/picks", require("./routers/userPicksRouter"));
+app.use("/pool", require("./routers/poolRouter"));
+
 app.use("/auth", require("./routers/userRouter"));
 
 // connect to mongodb

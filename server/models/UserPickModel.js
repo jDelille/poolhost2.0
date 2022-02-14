@@ -16,6 +16,6 @@ const userPicksSchema = new mongoose.Schema(
   }
 );
 
-const UserPicks = mongoose.model("picks", userPicksSchema);
+const Picks = mongoose.model("picks", userPicksSchema);
 
-module.exports = UserPicks;
+module.exports = Picks;
