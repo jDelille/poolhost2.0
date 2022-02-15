@@ -1,57 +1,124 @@
-@import "../../styles/variables.scss"; 
+@import "../../styles/variables.scss";
 
 .show-picks {
- width: 100%;
- .labels {
-  display: flex;
-  align-items: center;
-  height: 75px;
-  position: relative;
-  justify-content: center;
-  .labels-box {
-   height: 55px;
-   width: 85px;
-   display: flex;
-   align-items: center;
-   justify-content: center;
-   display: flex;
-   flex-direction: column;
+  width: 100%;
+  .label-container {
+   .labels {
+    display: flex;
+    align-items: center;
+    height: 75px;
+    position: relative;
+    justify-content: center;
+    .labels-box {
+      height: 55px;
+      width: 85px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      display: flex;
+      flex-direction: column;
+    }
   }
- }
- .picks-container {
-  display: flex;
-  align-items: center;
-  height: 100px;
-  position: relative;
-  justify-content: center;
-  .pick {
-   height: 55px;
-   width: 85px;
-   display: flex;
-   align-items: center;
-   justify-content: center;
-   border: 1px solid lightgray;
-   .logo {
-    max-width: 45px;
-   }
   }
- }
- .delete-btn {
-  background-color: var(--danger-color);
-  padding: 10px 30px;
-  border: none;
-  width: 160px;
-  border-radius: 4px;
-  color: white;
-  font-size: 1rem;
-  font-weight: lighter;
-  margin: 2rem auto;
-  display: block;
-  cursor: pointer;
-  box-shadow: var(--box-shadow);
-  &:hover {
-   box-shadow: none;
-   transition: all 100ms ease-in-out;
+  
+  .picks-container {
+    display: flex;
+    align-items: center;
+    height: 100px;
+    position: relative;
+    justify-content: center;
+    .picks {
+     display: flex;
+     .pick {
+      height: 55px;
+      width: 85px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid lightgray;
+      .logo {
+        max-width: 45px;
+      }
+    }
+    }
+    
   }
- }
+  .delete-btn {
+    background-color: var(--danger-color);
+    padding: 10px 30px;
+    border: none;
+    width: 160px;
+    border-radius: 4px;
+    color: white;
+    font-size: 1rem;
+    font-weight: lighter;
+    margin: 2rem auto;
+    display: block;
+    cursor: pointer;
+    box-shadow: var(--box-shadow);
+    &:hover {
+      box-shadow: none;
+      transition: all 100ms ease-in-out;
+    }
+  }
+}
+
+@media only screen and (max-width: 900px) {
+  .show-picks {
+    width: 100%;
+    overflow-x: scroll;
+    .label-container {
+      display: flex;
+      height: 100px;
+      align-items: center;
+      .labels {
+        display: flex;
+        margin: 0 auto;
+        width: 100%;
+        justify-content: space-between;
+        .labels-box {
+          height: 55px;
+          min-width: 85px;
+          background-color: #fff;
+
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          flex-direction: column;
+          border: 1px solid lightgray;
+          height: auto;
+        }
+      }
+    }
+    .picks-container {
+      display: flex;
+      height: 100px;
+      align-items: center;
+      .picks {
+        display: flex;
+        margin: 0 auto;
+        width: 100%;
+        justify-content: space-between;
+        .pick {
+          height: 55px;
+          min-width: 85px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          flex-direction: column;
+          border: 1px solid lightgray;
+          height: auto;
+          background-color: #fff;
+        }
+      }
+    }
+  }
+  .delete-btn {
+   position: fixed;
+    width: 500px;
+    height: 50px;
+    margin: 5% auto; /* Will not center vertically and won't work in IE6/7. */
+    left: 0;
+    right: 0;
+  }
 }

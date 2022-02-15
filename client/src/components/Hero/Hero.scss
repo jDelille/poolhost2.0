@@ -1,8 +1,8 @@
 .hero {
   width: 100%;
-  padding-top: 2rem;
+  padding: 2rem;
   position: relative;
-  
+
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -54,11 +54,9 @@
           max-width: 50px;
         }
       }
-      
     }
-    
   }
-  
+
   .games-container {
     // game container stuff
     width: 100%;
@@ -71,6 +69,7 @@
       display: flex;
       margin: 0 auto;
       align-items: center;
+
       .game {
         height: 50%;
         width: 100%;
@@ -88,48 +87,47 @@
           align-items: center;
           justify-content: space-evenly;
           padding: 1rem;
-          box-shadow: 0 2px 4px 0 rgba(0,0,0,.2);
+          box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2);
           border-radius: 5px;
           &:hover {
-           box-shadow: none;
-           transition: all 100ms ease-in-out;
+            box-shadow: none;
+            transition: all 100ms ease-in-out;
           }
           cursor: pointer;
           input {
-           display: none;
+            display: none;
           }
-          
+
           .logo {
-           height: 100%;
-           display: flex;
-           align-items: center;
-           width: 20%;
-           justify-content: center;
-           margin-right: 0.5rem;
-           .team-logo{
-            max-width: 50px;
-           }
+            height: 100%;
+            display: flex;
+            align-items: center;
+            width: 20%;
+            justify-content: center;
+            margin-right: 0.5rem;
+            .team-logo {
+              max-width: 50px;
+            }
           }
           .team-id {
-           height: 100%;
-           display: flex;
-           flex-direction: column;
-           justify-content: center;
-           width: 55%;
-           p {
-            font-size: 0.9rem;
-           }
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            width: 55%;
+            p {
+              font-size: 0.9rem;
+            }
           }
           .record {
-           height: 100%;
-           display: flex;
-           justify-content: center;
-           align-items: center;
-           p {
-            font-size: 0.85rem;
-           }
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            p {
+              font-size: 0.85rem;
+            }
           }
-          
         }
 
         .q {
@@ -156,8 +154,70 @@
         width: 33%;
         height: 100%;
       }
-
-      
     }
+  }
+}
+
+@media only screen and (max-width: 900px) {
+  .hero {
+    width: 100%;
+    padding: 2rem 0;;
+    position: relative;
+    .games-container {
+      width: 100%;
+      height: 100%;
+      .games-box {
+        width: 100%;
+        display: flex;
+        margin: 0 auto;
+        align-items: center;
+        .game {
+          width: 100%;
+          justify-content: space-between;
+
+          .game-info {
+            display: none;
+          }
+          .box {
+            justify-content: space-evenly;
+            width: 48%;
+            .team-id {
+              display: none;
+            }
+            .abbr {
+              display: block;
+            }
+            .record {
+              display: none;
+            }
+            .logo {
+              width: 50px;
+            }
+          }
+        }
+      }
+    }
+    .btn-container {
+      width: 100%;
+      .show-picks-container {
+      
+        display: flex;
+        flex-wrap: wrap;      
+        align-items: center;
+  
+        .logos {
+          width: 90%;
+          align-items: center;
+          justify-content: center;
+          display: flex;
+          flex-wrap: wrap;     
+          justify-content: space-evenly;
+          .logo {
+            max-width: 50px;
+          }
+        }
+      }
+    }
+   
   }
 }

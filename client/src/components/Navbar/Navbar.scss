@@ -1,46 +1,129 @@
 .navbar {
- width: 100%;
- height: 65px;
- display: flex;
- align-items: center;
- padding: 0 11rem;
- top: 0;
- z-index: 9999;
- 
- .brand {
-  color: black;
-  width: 15%;
-  height: 100%;
+  width: 100%;
+  height: 65px;
   display: flex;
   align-items: center;
-  justify-content: center;
- }
+  padding: 0 11rem;
+  top: 0;
+  z-index: 9998;
 
- .nav-links {
-  width: 70%;
-  height: 100%;
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-  a {
-   color: black;
-   font-size: 1.1rem;
-   text-decoration: none;
-   font-weight: lighter;
+  .brand {
+    color: black;
+    width: 15%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
- }
 
- .user-links {
-  width: 15%;
-  height: 100%;
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-  margin-left: auto;
-  justify-content: center;
-  .link {
-   color: white;
-   text-decoration: none;
+  .nav-links {
+    width: 70%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    justify-content: center;
+    a {
+      color: black;
+      font-size: 1.1rem;
+      text-decoration: none;
+      font-weight: lighter;
+    }
   }
- }
+
+  .user-links {
+    width: 15%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-left: auto;
+    border: 1px solid black;
+    justify-content: center;
+    .link {
+      color: white;
+      text-decoration: none;
+    }
+  }
+
+  .logout-btn {
+  }
+  .burger {
+    display: none;
+  }
 }
+
+@media only screen and (max-width: 900px) {
+  .navbar {
+    display: flex;
+    margin: 0;
+    padding: 0 2rem;
+    width: 100%;
+    align-items: center;
+    height: 65px;
+    .brand {
+      width: 40%;
+    }
+    .nav-links {
+      display: none;
+    }
+    .user-links {
+      display: none;
+    }
+    .burger {
+      display: block;
+      margin-left: auto;
+      font-size: 1.6rem;
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+    }
+    .dropdown {
+      width: 100%;
+      position: absolute;
+      background-color: #fff;
+      left: 0;
+      top: 65px;
+      z-index: 9999;
+      display: flex;
+      flex-direction: column;
+      transition: all 100ms ease-in-out;
+      padding: 2rem 1rem;
+      border-bottom: 4px solid slateblue;
+      .user-links-mobile {
+        position: absolute;
+        bottom: 20px;
+        .btn {
+          padding: 10px 30px;
+          border: 1px solid black;
+          text-decoration: none;
+          margin-right: 1rem;
+        }
+        .logout-btn {
+          position: absolute;
+          bottom: 1rem;
+          border: none;
+          width: 200px;
+          border: 1px solid black;
+
+        }
+      }
+
+      .nav-links-mobile {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        width: 100%;
+        margin-bottom: 3rem;
+
+        a {
+          text-decoration: none;
+          color: black;
+          width: 140px;
+          margin: 10px 0;
+        }
+      }
+    }
+  }
+}
+

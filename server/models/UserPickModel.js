@@ -10,6 +10,10 @@ const userPicksSchema = new mongoose.Schema(
       type: ObjectId,
       required: true
     },
+    email: {
+      type: String,
+      required: true
+    }
   },
   {
     timestamps: true,

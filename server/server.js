@@ -27,6 +27,8 @@ app.use("/pool", require("./routers/poolRouter"));
 
 app.use("/auth", require("./routers/userRouter"));
 
+app.use('/loggedIn', require("./routers/loggedInRouter"));
+
 // connect to mongodb
 
 mongoose.connect(
@@ -45,7 +47,7 @@ mongoose.connect(
 
 app.get("/gamebar", async (req, res) => {
  const response = await axios.get(
-   "https://site.web.api.espn.com/apis/v2/scoreboard/header?sport=basketball&league=nba"
+  "https://sports.yahoo.com/site/api/resource/sports.graphite.leagueOdds;count=50;dataType=graphite;dates=current%2Ccurrent%2B1%2Ccurrent%2B2%2Ccurrent%2B3%2Ccurrent%2B4%2Ccurrent%2B5%2Ccurrent%2B6;endpoint=graphite;league=nba?bkt=%5B%22xray-us-sports-betting-2%22%2C%22Fanatics_vs_BreakingT_desktop_test%22%5D&device=desktop&intl=us&lang=en-US&prid=em3gfrph0lm1l&region=US&site=sports&tz=America%2FPhoenix&ver=1.0.8775&returnMeta=true"
  );
  const news = response.data;
  res.status(200).send(news);

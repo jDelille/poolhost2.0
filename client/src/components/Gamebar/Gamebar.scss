@@ -3,7 +3,7 @@
  border: 1px solid white;
  box-shadow: -4px 0px 3px 0px rgba(0,0,0,.2);
  
- z-index: 9999;
+ z-index: 9989;
  display: flex;
  justify-content: center;
  background-color: #ffffff;
@@ -89,4 +89,22 @@
   }
  }
  
+}
+
+@media only screen and (max-width: 900px) {
+ .gamebar {
+  width: 100%;
+  box-shadow: -4px 0px 3px 0px rgba(0,0,0,.2);
+  margin: 0 auto;
+  z-index: 9989;
+  display: flex;
+  justify-content: center;
+  position: relative;
+  .gamebar-contents {
+   width: 100%;
+   justify-content: flex-start;
+   .gamebar-box {
+   }
+  }
+ }
 }

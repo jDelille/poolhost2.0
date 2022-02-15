@@ -23,6 +23,16 @@ function Hero() {
 
   // GET PICKS
   const [picks, setPicks] = useState([]);
+  
+
+  const [email, setEmail] = useState('')
+
+  async function getUser() {
+    const userRes = await axios.get(`${domain}/loggedIn/${user}`);
+    setEmail(userRes.data.email)
+  }
+
+  getUser()
 
   
   useEffect(() => {
@@ -83,7 +93,8 @@ function Hero() {
   async function addPicks() {
     const picksData = {
       picks: pick,
-      user: user.email
+      user: user,
+      email: email
     };
     try {
       axios.post(`${domain}/picks/`, picksData);
@@ -135,7 +146,6 @@ function Hero() {
         ? renderPicks()
         : user && (
             <>
-              <p> No picks yet </p>
               <MakePicks
                 data={data}
                 handleSubmit={handleSubmit}

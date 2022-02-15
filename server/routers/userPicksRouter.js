@@ -17,7 +17,7 @@ router.get("/", auth, async (req, res) => {
 
 router.post("/", auth, async (req, res) => {
   try {
-    const { picks } = req.body;
+    const {picks, email} = req.body;
     // validation
     if (!picks) {
       return res.status(400).json({
@@ -28,6 +28,7 @@ router.post("/", auth, async (req, res) => {
     const newPicks = new Picks({
       picks,
       user: req.user,
+      email: email
     });
 
     const savedPicks = await newPicks.save();

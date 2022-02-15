@@ -11,6 +11,7 @@ function Gamebar() {
   let [date, setDate] = useState(20220210);
   const [scroll, setScroll] = useState(false);
 
+  const [test, setTest] = useState([])
  
 
   useEffect(() => {
@@ -20,6 +21,16 @@ function Gamebar() {
       setData(data.scoreboard.games)
     })
   },[])
+
+  useEffect(() => {
+    fetch('/gamebar')
+    .then((res) => res.json())
+    .then((data) => {
+      setTest(data)
+    })
+  },[])
+
+  console.log(test)
 
   console.log(data)
 

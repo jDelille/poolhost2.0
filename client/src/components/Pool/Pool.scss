@@ -4,6 +4,18 @@
   align-items: center;
   justify-content: center;
   margin: 2rem auto;
+  height: 75px;
+  position: relative;
+  .name-label {
+    width: 200px;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid lightgray;
+    border-right: none;
+
+  }
   .label-box {
     width: 85px;
     display: flex;
@@ -11,34 +23,109 @@
     flex-direction: column;
     justify-content: center;
     border: 1px solid lightgray;
+    height: 100%;
   }
 }
 
 .all-picks {
-  width: 80%;
   display: flex;
   align-items: center;
   justify-content: center;
   margin: 2rem auto;
   flex-direction: column;
-  .user-pick {
-   width: 80%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin: 2rem auto;
-  
-  }
-  .picked-logo {
-    width: 85px;
+  .user-pick-box {
     display: flex;
     align-items: center;
-    flex-direction: column;
-    justify-content: center;
-    border: 1px solid lightgray;
-    
-    .logo {
-     max-width: 50px;
+    margin: 1rem 0;
+    .user-email {
+      width: 200px;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .user-pick {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      .picked-logo {
+        width: 85px;
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        justify-content: center;
+        border: 1px solid lightgray;
+        height: 100%;
+        .logo {
+          max-width: 45px;
+        }
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 900px) {
+  .pool {
+    width: 100%;
+    overflow-x: auto;
+    padding: 1rem 0;
+    overflow-x: scroll;
+    .label-container {
+      display: flex;
+      height: 100px;
+      align-items: center;
+
+      .labels {
+
+        display: flex;
+        margin: 0 auto;
+        width: 100%;
+        justify-content: space-between;
+        .name-label {
+          min-width: 125px;
+          background-color: #fff;
+
+          
+        }
+        .label-box {
+          min-width: 75px;
+          background-color: #fff;
+
+        }
+      }
+    }
+
+    .all-picks {
+      display: flex;
+      height: 125px;
+      align-items: center;
+      gap: 0.75rem;
+      .user-pick-box {
+        display: flex;
+        margin: 0 auto;
+        width: 100%;
+        justify-content: space-between;
+   
+        .user-email {
+          overflow-x: hidden;
+          max-width: 125px;
+          font-size: 11px;
+          border: 1px solid lightgray;
+          border-right: none;
+          height: 47px;
+          background-color: #fff;
+
+        }
+
+        .picked-logo {
+          min-width: 75px;
+          width: 100%;
+          display: flex;
+          background-color: #fff;
+
+        }
+      }
     }
   }
 }

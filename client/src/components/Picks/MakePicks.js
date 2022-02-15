@@ -33,6 +33,10 @@ function MakePicks({ data, handleSubmit, addPicks, array, resetPicks, pick }) {
                     <p> {item.homeTeam.teamCity}</p>
                     <p> Home </p>
                   </div>
+                  <div className="abbr">
+                    <p> {item.homeTeam.teamTricode}</p>
+                    <p> Home </p>
+                  </div>
                   <div className="record">
                     <p>
                       ({item.homeTeam.wins} - {item.homeTeam.losses})
@@ -65,6 +69,10 @@ function MakePicks({ data, handleSubmit, addPicks, array, resetPicks, pick }) {
                   />
                   <div className="team-id">
                     <p> {item.awayTeam.teamCity}</p>
+                    <p> Away </p>
+                  </div>
+                  <div className="abbr">
+                    <p> {item.awayTeam.teamTricode}</p>
                     <p> Away </p>
                   </div>
                   <div className="record">
