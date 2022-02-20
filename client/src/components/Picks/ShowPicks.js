@@ -15,45 +15,37 @@ function ShowPicks({ picks, getPicks, editPicks, data }) {
     getPicks();
   }
 
-  // delete picks once every day
-  useEffect(() => {
-    setInterval(function () {
-      let date = new Date();
-      if (date.getHours() === 11 && date.getMinutes() === 50) {
-        axios.delete(`${domain}/picks/`);
-      }
-    }, 1000);
-  }, []);
-
   return (
     <div className="show-picks">
-      <div className="label-container">
-        <div className="labels">
-          {data.map((item) => {
-            return (
-              <div className="labels-box">
-                <p> {item.homeTeam.teamTricode}</p>
-                <p> vs</p>
-                <p> {item.awayTeam.teamTricode}</p>
-              </div>
-            );
-          })}
-        </div>
-      </div>
-
-      <div className="picks-container">
-        <div className="picks">
-          {!picks ? (
-            <p> Loading </p>
-          ) : (
-            picks.picks.map((item) => {
+      <div className="pick-content">
+        <div className="label-container">
+          <div className="labels">
+            {data.map((item) => {
               return (
-                <div className="pick">
-                  <img src={`../icons/${item}.svg`} className="logo" alt="" />
+                <div className="labels-box">
+                  <p> {item.homeTeam.teamTricode}</p>
+                  <p> vs</p>
+                  <p> {item.awayTeam.teamTricode}</p>
                 </div>
               );
-            })
-          )}
+            })}
+          </div>
+        </div>
+
+        <div className="picks-container">
+          <div className="picks">
+            {!picks ? (
+              <p> Loading </p>
+            ) : (
+              picks.picks.map((item) => {
+                return (
+                  <div className="pick">
+                    <img src={`../icons/${item}.svg`} className="logo" alt="" />
+                  </div>
+                );
+              })
+            )}
+          </div>
         </div>
       </div>
 

@@ -1,0 +1,61 @@
+.home-page {
+ position: relative;
+ height: calc(100% - 155px);
+ padding: 2rem 6rem;
+ .home-text {
+  height: 70%;
+  position: relative;
+  h1 {
+   font-size: 3rem;
+  }
+  p {
+   font-size: 2rem;
+  }
+  .how-to {
+   position: absolute;
+   bottom: 0;
+   margin-top: 1rem;
+   p {
+    margin-left: -1.1rem;
+   }
+   ol li {
+    font-size: 1.4rem;
+    margin-left: 1rem;
+    margin-top: 1rem;
+
+   }
+  }
+ }
+}
+
+@media only screen and (max-width: 900px) {
+ .home-page {
+  padding: 1rem;
+  text-align: center;
+  text-transform: uppercase;
+  .home-text {
+   p {
+    font-size: 1.2rem;
+    margin-top: 2rem;
+   }
+  }
+  
+  .btn-container {
+   display: flex;
+   flex-direction: column;
+   position: relative;
+   bottom: 5%;
+   background: rgb(237,238,240);
+
+   a {
+    border: 1px solid black;
+    padding: 10px 30px;
+    margin-bottom: 1rem;
+    background-color: var(--black);
+    color: white;
+    font-weight: 300;
+    border-radius: 5px;
+   }
+  }
+ }
+}

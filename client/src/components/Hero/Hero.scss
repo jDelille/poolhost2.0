@@ -30,6 +30,8 @@
       text-decoration: none;
       box-shadow: var(--box-shadow);
       border-radius: 4px;
+      background-color: var(--black);
+      color: white;
       cursor: pointer;
       border: 0;
       &:hover {
@@ -65,7 +67,7 @@
 
     .games-box {
       // each game box stuff
-      width: 50%;
+      width: 70%;
       display: flex;
       margin: 0 auto;
       align-items: center;
@@ -108,6 +110,9 @@
             .team-logo {
               max-width: 50px;
             }
+          }
+          .abbr {
+            display: none;
           }
           .team-id {
             height: 100%;
@@ -157,6 +162,18 @@
     }
   }
 }
+
+@media only screen and (min-width: 1920px) {
+  .hero {
+    .games-container {
+      .games-box {
+        width: 50%;
+      }
+    }
+  }
+} 
+
+
 
 @media only screen and (max-width: 900px) {
   .hero {

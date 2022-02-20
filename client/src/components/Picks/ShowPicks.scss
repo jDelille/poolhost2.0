@@ -3,24 +3,24 @@
 .show-picks {
   width: 100%;
   .label-container {
-   .labels {
-    display: flex;
-    align-items: center;
-    height: 75px;
-    position: relative;
-    justify-content: center;
-    .labels-box {
-      height: 55px;
-      width: 85px;
+    .labels {
       display: flex;
       align-items: center;
+      height: 75px;
+      position: relative;
       justify-content: center;
-      display: flex;
-      flex-direction: column;
+      .labels-box {
+        height: 55px;
+        width: 85px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        display: flex;
+        flex-direction: column;
+      }
     }
   }
-  }
-  
+
   .picks-container {
     display: flex;
     align-items: center;
@@ -28,20 +28,19 @@
     position: relative;
     justify-content: center;
     .picks {
-     display: flex;
-     .pick {
-      height: 55px;
-      width: 85px;
       display: flex;
-      align-items: center;
-      justify-content: center;
-      border: 1px solid lightgray;
-      .logo {
-        max-width: 45px;
+      .pick {
+        height: 55px;
+        width: 85px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border: 1px solid lightgray;
+        .logo {
+          max-width: 45px;
+        }
       }
     }
-    }
-    
   }
   .delete-btn {
     background-color: var(--danger-color);
@@ -66,55 +65,69 @@
 @media only screen and (max-width: 900px) {
   .show-picks {
     width: 100%;
-    overflow-x: scroll;
-    .label-container {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    .pick-content {
+      width: 100%;
       display: flex;
-      height: 100px;
-      align-items: center;
-      .labels {
+      justify-content: center;
+      gap: 1rem;
+      .label-container {
         display: flex;
-        margin: 0 auto;
-        width: 100%;
-        justify-content: space-between;
-        .labels-box {
-          height: 55px;
-          min-width: 85px;
-          background-color: #fff;
-
+        flex-direction: column;
+        align-items: center;
+        .labels {
           display: flex;
-          align-items: center;
-          justify-content: center;
+          margin: 0 auto;
+          width: 100%;
           flex-direction: column;
-          border: 1px solid lightgray;
-          height: auto;
+          height: 80vh;
+          .labels-box {
+            height: 55px;
+            min-width: 85px;
+            background-color: #fff;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            border: 1px solid lightgray;
+            height: 100px;
+          }
         }
       }
-    }
-    .picks-container {
-      display: flex;
-      height: 100px;
-      align-items: center;
-      .picks {
+      .picks-container {
         display: flex;
-        margin: 0 auto;
-        width: 100%;
-        justify-content: space-between;
-        .pick {
-          height: 55px;
-          min-width: 85px;
+        height: 100px;
+        align-items: center;
+        height: 80vh;
+        .picks {
           display: flex;
-          align-items: center;
-          justify-content: center;
+          margin: 0 auto;
+          width: 100%;
+          justify-content: space-between;
           flex-direction: column;
-          border: 1px solid lightgray;
-          height: auto;
-          background-color: #fff;
+          .pick {
+            height: 55px;
+            min-width: 85px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            border: 1px solid lightgray;
+            height: auto;
+            background-color: #fff;
+            height: 100px;
+
+          }
         }
       }
     }
   }
   .delete-btn {
-   position: fixed;
+    position: relative;
     width: 500px;
     height: 50px;
     margin: 5% auto; /* Will not center vertically and won't work in IE6/7. */

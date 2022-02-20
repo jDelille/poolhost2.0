@@ -8,12 +8,14 @@ const userPicksSchema = new mongoose.Schema(
     },
     user: {
       type: ObjectId,
-      required: true
+      required: true,
     },
     email: {
       type: String,
-      
-    }
+    },
+    username: {
+      type: String,
+    },
   },
   {
     timestamps: true,

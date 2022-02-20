@@ -4,8 +4,8 @@
  @include card();
  width: 30%;
  height: auto;
- padding: 4rem 0;
  margin: 0 auto;
+
 
 
  h2 {
@@ -17,14 +17,15 @@
 
  .submit-btn {
   @include btn();
-  background: var(--accent-color);
+  background: var(--secondary-color);
   color: var(--primary-color);
   width: 85%;
   height: 45px;
   display: block;
-  margin: 3rem auto;
+  margin: 0 auto;
   position: relative;
-  top: 50px;
+  margin-bottom: 1rem;
+  top: 20px;
  }
 
  .login-link {
@@ -68,14 +69,14 @@
 
  .submit-btn {
   @include btn();
-  background: var(--accent-color);
+  background: var(--secondary-color);
   color: var(--primary-color);
   width: 85%;
   height: 45px;
   display: block;
   margin: 3rem auto;
   position: relative;
-  top: 50px;
+  top: 20px;
  }
 
  .register-link {
@@ -87,7 +88,7 @@
  .form-inputs {
   margin: 0 auto;
   width: 85%;
-  margin-top: 2rem;
+  margin-top: 1rem;
 
  }
 }

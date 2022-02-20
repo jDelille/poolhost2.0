@@ -1,5 +1,5 @@
 const router = require("express").Router();
-const Picks = require("../models/userPickModel");
+const Picks = require("../models/userPicksModel");
 const auth = require("../middleware/auth");
 
 
@@ -17,7 +17,7 @@ router.get("/", auth, async (req, res) => {
 
 router.post("/", auth, async (req, res) => {
   try {
-    const {picks, email} = req.body;
+    const {picks, email, username} = req.body;
     // validation
     if (!picks) {
       return res.status(400).json({
@@ -28,7 +28,8 @@ router.post("/", auth, async (req, res) => {
     const newPicks = new Picks({
       picks,
       user: req.user,
-      email: email
+      email: email,
+      username: username
     });
 
     const savedPicks = await newPicks.save();

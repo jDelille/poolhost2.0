@@ -2,7 +2,7 @@
  width: 100%;
  border: 1px solid white;
  box-shadow: -4px 0px 3px 0px rgba(0,0,0,.2);
- 
+ background-color: red;
  z-index: 9989;
  display: flex;
  justify-content: center;
@@ -38,12 +38,12 @@
  }
  .gamebar-contents {
   display: flex;
+  height: 90px;
   overflow-x: scroll;
   transition: all 100ms ease-in-out;
   width: 1440px;
   align-items: center;
   justify-content: center;
-  margin: 0 auto;
   &::-webkit-scrollbar {
    display: none;
   }
@@ -52,14 +52,14 @@
     border-left: 1px solid lightgray;
    }
    border-right: 1px solid lightgray;
+
    height: 100%;
    min-width: 180px;
-   padding: 0.5rem;
+   padding: 0.5rem 0.5rem;
    color:  black;
    position: relative;
    display: flex;
    flex-direction: column;
-   gap: 0.1rem;
    .gamebar-info {
     font-size: 0.75rem;
     font-weight: 500;

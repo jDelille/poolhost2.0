@@ -4,7 +4,6 @@ import { Link } from "react-router-dom";
 function MakePicks({ data, handleSubmit, addPicks, array, resetPicks, pick }) {
   const [locked, setLocked] = useState(true);
 
-  
   return (
     <>
       <div className="text"></div>
@@ -73,7 +72,7 @@ function MakePicks({ data, handleSubmit, addPicks, array, resetPicks, pick }) {
                   </div>
                   <div className="abbr">
                     <p> {item.awayTeam.teamTricode}</p>
-                    <p> Away </p>
+                    <p> Home </p>
                   </div>
                   <div className="record">
                     <p>
@@ -109,7 +108,7 @@ function MakePicks({ data, handleSubmit, addPicks, array, resetPicks, pick }) {
             Add Picks
           </button>
         )}
-      
+
         <div className="show-picks-container ">
           <p> Your Picks: </p>
           <div className="logos">

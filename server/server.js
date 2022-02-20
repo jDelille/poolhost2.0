@@ -9,14 +9,14 @@ dotenv.config();
 
 // set up express server
 const app = express();
-const PORT = 3333;
+const PORT = process.env.PORT || 3333;
 
 app.use(express.json());
 
 app.use(express.json());
 app.use(
   cors({
-    origin: "http://localhost:3000",
+    origin: ["http://localhost:3000", "https://poolhost.netlify.app"],
     credentials: true,
   })
 );
@@ -63,6 +63,13 @@ app.get("/games", async (req, res) => {
   res.status(200).send(news);
  });
 
+ app.get("/schedule", async (req, res) => {
+  const response = await axios.get(
+    "https://fcast.espncdn.com/FastcastService/pubsub/profiles/12000/topic/event-basketball-nba/message/2309331/checkpoint"
+  );
+  const news = response.data;
+  res.status(200).send(news);
+ });
 
 
-app.listen(PORT, () => console.log('Hello Master Bweem, the server is running on 3333.'))
+app.listen(PORT, () => console.log(`Hello Master Bweem, the server is running on ${PORT}.`))

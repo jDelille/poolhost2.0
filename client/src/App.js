@@ -1,4 +1,4 @@
-import "./App.scss";
+import "./styles/App.scss";
 import Gamebar from "./components/Gamebar/Gamebar";
 import Hero from "./components/Hero/Hero";
 import Navbar from "./components/Navbar/Navbar";

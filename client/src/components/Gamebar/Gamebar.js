@@ -1,57 +1,20 @@
 import React, { useState, useEffect } from "react";
 import "./Gamebar.scss";
-import { MdArrowRight } from "react-icons/md";
-import axios from "axios";
-import { BsPlusCircle } from "react-icons/bs";
-import { ImArrowLeft, ImArrowRight } from "react-icons/im";
+import domain from "../../util/domain";
 
 function Gamebar() {
   const [data, setData] = useState([]);
 
-  let [date, setDate] = useState(20220210);
-  const [scroll, setScroll] = useState(false);
-
-  const [test, setTest] = useState([])
- 
-
   useEffect(() => {
-    fetch('/games')
-    .then((res) => res.json())
-    .then((data) => {
-      setData(data.scoreboard.games)
-    })
-  },[])
-
-  useEffect(() => {
-    fetch('/gamebar')
-    .then((res) => res.json())
-    .then((data) => {
-      setTest(data)
-    })
-  },[])
-
-  console.log(test)
-
-  console.log(data)
-
-  function scrollGamebarForward() {
-    document.getElementById("container").scrollLeft += 820;
-  }
-
-  function scrollGamebarBack() {
-    document.getElementById("container").scrollLeft -= 820;
-  }
-
+    fetch(`${domain}/games`)
+      .then((res) => res.json())
+      .then((data) => {
+        setData(data.scoreboard.games);
+      });
+  }, []);
 
   return (
     <div className="gamebar">
-      {/* <div className="date-picker">
-        
-
-        {data.map(item => {
-          return <p> {item?.date}</p>
-        })}
-      </div> */}
       <div className="gamebar-contents" id="container">
         {data.map((item, index) => {
           return (
@@ -64,7 +27,7 @@ function Gamebar() {
               {/* GAMEBOX HOME TEAM */}
               <div className="home">
                 <div className="abbr">
-                <img
+                  <img
                     src={`../icons/${item.homeTeam.teamTricode}.svg`}
                     className="logo"
                     alt=""
@@ -78,7 +41,7 @@ function Gamebar() {
               {/* GAMEBOX AWAY TEAM */}
               <div className="away">
                 <div className="abbr">
-                <img
+                  <img
                     src={`../icons/${item.awayTeam.teamTricode}.svg`}
                     className="logo"
                     alt=""
@@ -92,26 +55,6 @@ function Gamebar() {
           );
         })}
       </div>
-      {/* <div className="scroller">
-        {scroll ? (
-          <ImArrowRight
-            className="arrow"
-            onClick={() => {
-              scrollGamebarForward();
-              setScroll(!scroll);
-            }}
-          />
-        ) : (
-          <ImArrowLeft
-            className="arrow"
-            onClick={() => {
-              scrollGamebarBack();
-              setScroll(!scroll);
-            }}
-          />
-        )}
-        <button > - </button>
-      </div> */}
     </div>
   );
 }

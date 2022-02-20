@@ -26,11 +26,15 @@ function Hero() {
   
 
   const [email, setEmail] = useState('')
+  const [username, setUsername] = useState('')
 
   async function getUser() {
     const userRes = await axios.get(`${domain}/loggedIn/${user}`);
     setEmail(userRes.data.email)
+    setUsername(userRes.data.username)
   }
+
+  console.log(username)
 
   getUser()
 
@@ -66,7 +70,7 @@ function Hero() {
   }
 
   useEffect(() => {
-    fetch("/games")
+    fetch(`${domain}/games`)
       .then((res) => res.json())
       .then((data) => {
         setData(data.scoreboard.games);
@@ -94,7 +98,8 @@ function Hero() {
     const picksData = {
       picks: pick,
       user: user,
-      email: email
+      email: email,
+      username: username
     };
     try {
       axios.post(`${domain}/picks/`, picksData);
@@ -111,7 +116,7 @@ function Hero() {
 
 
   function resetPicks() {
-      
+      array = []
   }
 
  

@@ -1,5 +1,5 @@
 const router = require("express").Router();
-const Picks = require("../models/userPickModel");
+const Picks = require("../models/userPicksModel");
 const auth = require("../middleware/auth");
 
 // GET ALL PICKS
