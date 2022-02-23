@@ -22,6 +22,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+
 }
 
 body {
@@ -32,8 +33,10 @@ body {
 }
 
 .App {
-  
+  padding: 1rem 2rem;
   position: relative;
+  overflow-x: hidden;
+
 }
 
 button {

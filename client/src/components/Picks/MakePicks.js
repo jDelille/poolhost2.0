@@ -1,12 +1,33 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import PicksPopup from "../Popup/PicksPopup";
 
-function MakePicks({ data, handleSubmit, addPicks, array, resetPicks, pick }) {
+function MakePicks({
+  data,
+  handleSubmit,
+  addPicks,
+  array,
+  resetPicks,
+  pick,
+  setPick,
+}) {
   const [locked, setLocked] = useState(true);
-
+  const [popUp, setPopUp] = useState(false);
   return (
     <>
-      <div className="text"></div>
+      {popUp ? (
+        <div className="popup">
+          <PicksPopup
+            addPicks={addPicks}
+            pick={pick}
+            setPopUp={setPopUp}
+            setPick={setPick}
+          />
+        </div>
+      ) : (
+        <p> </p>
+      )}
+
       <div className="games-container">
         {data.map((item, index) => {
           return (
@@ -16,44 +37,41 @@ function MakePicks({ data, handleSubmit, addPicks, array, resetPicks, pick }) {
                 <label className="box">
                   <input
                     type="radio"
-                    name={item.gameId}
+                    name={item.id}
                     id="radio"
-                    value={item.homeTeam.teamTricode}
+                    value={item.homeEventResult.competitor.shortName}
                   />
                   <div className="logo">
                     <img
-                      src={`../icons/${item.homeTeam.teamTricode}.svg`}
+                      src={`../icons/${item.homeEventResult.competitor.shortName}.svg`}
                       className="team-logo"
                       alt=""
                     />
                   </div>
 
                   <div className="team-id">
-                    <p> {item.homeTeam.teamCity}</p>
+                    <p> {item.homeEventResult.competitor.location}</p>
                     <p> Home </p>
                   </div>
                   <div className="abbr">
-                    <p> {item.homeTeam.teamTricode}</p>
+                    <p> {item.homeEventResult.competitor.shortName}</p>
                     <p> Home </p>
                   </div>
                   <div className="record">
-                    <p>
-                      ({item.homeTeam.wins} - {item.homeTeam.losses})
-                    </p>
+                    <p>{item.homeEventResult.competitor.recordOverall}</p>
                   </div>
                 </label>
 
                 {/* GAME INFO */}
                 <div className="game-info">
-                  <p className="game-time">{item.gameStatusText}</p>
-                  <p>{item.seriesSummary}</p>
+                  <p className="game-time">{item.gameStatus}</p>
                 </div>
 
                 {/* AWAY SIDE */}
                 <label className="box">
                   <div className="logo">
                     <img
-                      src={`../icons/${item.awayTeam.teamTricode}.svg`}
+                      src={`../icons/${item.awayEventResult.competitor.shortName}.svg`}
                       className="team-logo"
                       alt=""
                     />
@@ -61,23 +79,21 @@ function MakePicks({ data, handleSubmit, addPicks, array, resetPicks, pick }) {
 
                   <input
                     type="radio"
-                    name={item.gameId}
+                    name={item.id}
                     id="radio"
-                    value={item.awayTeam.teamTricode}
+                    value={item.awayEventResult.competitor.shortName}
                     className="radio"
                   />
                   <div className="team-id">
-                    <p> {item.awayTeam.teamCity}</p>
+                    <p> {item.awayEventResult.competitor.location}</p>
                     <p> Away </p>
                   </div>
                   <div className="abbr">
-                    <p> {item.awayTeam.teamTricode}</p>
+                    <p> {item.awayEventResult.competitor.shortName}</p>
                     <p> Home </p>
                   </div>
                   <div className="record">
-                    <p>
-                      ({item.awayTeam.wins} - {item.awayTeam.losses})
-                    </p>
+                    <p>{item.awayEventResult.competitor.recordOverall}</p>
                   </div>
                 </label>
               </div>
@@ -85,50 +101,20 @@ function MakePicks({ data, handleSubmit, addPicks, array, resetPicks, pick }) {
             </div>
           );
         })}
+        <div className="btn-container">
+        <button
+          onClick={() => {
+            handleSubmit();
+            setLocked(false);
+            setPopUp(true);
+          }}
+          className="btn"
+        >
+          Add Picks
+        </button>
       </div>
-      <div className="btn-container">
-        {pick.length > 0 ? (
-          <button
-            onClick={() => {
-              resetPicks();
-              setLocked(false);
-            }}
-            className="btn"
-          >
-            Reset Picks
-          </button>
-        ) : (
-          <button
-            onClick={() => {
-              handleSubmit();
-              setLocked(false);
-            }}
-            className="btn"
-          >
-            Add Picks
-          </button>
-        )}
-
-        <div className="show-picks-container ">
-          <p> Your Picks: </p>
-          <div className="logos">
-            {pick.map((item) => {
-              return (
-                <img src={`../icons/${item}.svg`} className="logo" alt="" />
-              );
-            })}
-          </div>
-        </div>
-        {pick.length === 0 ? (
-          <button disabled className="btn">
-            Go to Pool
-          </button>
-        ) : (
-          <Link className="btn" onClick={addPicks} to="/pool">
-            Go to Pool
-          </Link>
-        )}
       </div>
+      
     </>
   );
 }

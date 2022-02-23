@@ -7,6 +7,7 @@ import ErrorMessage from "../misc/ErrorMessage";
 import UserContext from "../../context/UserContext";
 import MakePicks from "../Picks/MakePicks";
 import ShowPicks from "../Picks/ShowPicks";
+import moment from 'moment'
 function Hero() {
   const [data, setData] = useState([]);
 
@@ -23,26 +24,24 @@ function Hero() {
 
   // GET PICKS
   const [picks, setPicks] = useState([]);
-  
 
-  const [email, setEmail] = useState('')
-  const [username, setUsername] = useState('')
+  const [email, setEmail] = useState("");
+  const [username, setUsername] = useState("");
 
   async function getUser() {
     const userRes = await axios.get(`${domain}/loggedIn/${user}`);
-    setEmail(userRes.data.email)
-    setUsername(userRes.data.username)
+    setEmail(userRes.data.email);
+    setUsername(userRes.data.username);
   }
 
-  console.log(username)
+  console.log(username);
 
-  getUser()
+  getUser();
 
-  
   useEffect(() => {
     if (!user) setPicks([]);
-    else getPicks()
-  },[user])
+    else getPicks();
+  }, [user]);
 
   async function getPicks() {
     const pickRes = await axios.get(`${domain}/picks/`);
@@ -70,18 +69,17 @@ function Hero() {
   }
 
   useEffect(() => {
-    fetch(`${domain}/games`)
+    fetch(`${domain}/schedule`)
       .then((res) => res.json())
       .then((data) => {
-        setData(data.scoreboard.games);
+        setData(data[1].eventList);
       });
   }, []);
 
+  console.log(data)
 
   let [pick, setPick] = useState([]);
   const [errorMessage, setErrorMessage] = useState(null);
-
-  
 
   function handleSubmit() {
     let radios = document.querySelectorAll("#radio");
@@ -93,13 +91,12 @@ function Hero() {
     }
   }
 
- 
   async function addPicks() {
     const picksData = {
       picks: pick,
       user: user,
       email: email,
-      username: username
+      username: username,
     };
     try {
       axios.post(`${domain}/picks/`, picksData);
@@ -114,15 +111,9 @@ function Hero() {
 
   let array = [...new Set(pick)];
 
-
   function resetPicks() {
-      array = []
+    array = [];
   }
-
- 
-
-
-
 
   const [selected, setSelected] = useState(false);
 
@@ -143,10 +134,28 @@ function Hero() {
     });
   });
 
-
+  let gameDate = moment(data[1]?.date).format('MMMM DD')
 
   return (
     <div className="hero">
+      <div className="content">
+        <p className="content-date">
+          Make your picks for <br />
+          <span>{gameDate}</span>
+        </p>
+        <div className="instructions">
+          <p> Choose one team for each game. </p>
+          <p>
+            If a game is in progress you will not be able to make a pick for
+            that game.
+          </p>
+          <p> Once you have made your picks click the add picks button.</p>
+          <p>
+            If you want to change your picks later you can do so before the
+            deadline.
+          </p>
+        </div>
+      </div>
       {picks.length > 0
         ? renderPicks()
         : user && (
@@ -158,6 +167,7 @@ function Hero() {
                 addPicks={addPicks}
                 resetPicks={resetPicks}
                 pick={pick}
+                setPick={setPick}
               />
             </>
           )}

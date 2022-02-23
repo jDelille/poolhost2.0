@@ -47,7 +47,7 @@ mongoose.connect(
 
 app.get("/gamebar", async (req, res) => {
  const response = await axios.get(
-  "https://sports.yahoo.com/site/api/resource/sports.graphite.leagueOdds;count=50;dataType=graphite;dates=current%2Ccurrent%2B1%2Ccurrent%2B2%2Ccurrent%2B3%2Ccurrent%2B4%2Ccurrent%2B5%2Ccurrent%2B6;endpoint=graphite;league=nba?bkt=%5B%22xray-us-sports-betting-2%22%2C%22Fanatics_vs_BreakingT_desktop_test%22%5D&device=desktop&intl=us&lang=en-US&prid=em3gfrph0lm1l&region=US&site=sports&tz=America%2FPhoenix&ver=1.0.8775&returnMeta=true"
+  "https://api.nflpickwatch.com/v1/general/games/2021/129/nba"
  );
  const news = response.data;
  res.status(200).send(news);
@@ -63,10 +63,14 @@ app.get("/games", async (req, res) => {
   res.status(200).send(news);
  });
 
+ //https://fcast.espncdn.com/FastcastService/pubsub/profiles/12000/topic/event-basketball-nba/message/2309331/checkpoint
+
+
  app.get("/schedule", async (req, res) => {
   const response = await axios.get(
-    "https://fcast.espncdn.com/FastcastService/pubsub/profiles/12000/topic/event-basketball-nba/message/2309331/checkpoint"
+    "https://datacrunch.9c9media.ca/statsapi/sports/basketball/leagues/nba/scoreboard?brand=tsn"
   );
+ 
   const news = response.data;
   res.status(200).send(news);
  });

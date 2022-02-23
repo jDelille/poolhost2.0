@@ -7,7 +7,7 @@ import axios from "axios";
 import { GiHamburgerMenu } from "react-icons/gi";
 import { useHistory } from "react-router-dom";
 
-function Navbar() {
+function Navbar({theme, setTheme}) {
   const { user } = useContext(UserContext);
 
   const history = useHistory();
@@ -19,7 +19,6 @@ function Navbar() {
     const userRes = await axios.get(`${domain}/loggedIn/${user}`);
     setUsername(userRes.data.username);
     setFavTeam(userRes.data.favoriteTeam);
-    console.log(userRes);
   }
   getUser();
 
@@ -36,7 +35,9 @@ function Navbar() {
   return (
     <div className="navbar">
       <div className="brand">
-        <h1> Poolhost </h1>
+        <div className="brand-content">
+          <h1> Poolhost </h1>
+        </div>
       </div>
       {showMenu ? (
         <div className="dropdown">
@@ -58,6 +59,7 @@ function Navbar() {
             >
               Pool
             </Link>
+           
             {/* <Link to="/" className="link" onClick={() => setShowMenu(false)}>
               About
             </Link>
@@ -91,6 +93,7 @@ function Navbar() {
                 >
                   Login
                 </Link>
+
               </>
             )}
           </ul>
@@ -107,6 +110,20 @@ function Navbar() {
             <Link to="/pool" className="link">
               Pool
             </Link>
+            <Link
+              to="/pool"
+              className="link"
+              onClick={() => setShowMenu(false)}
+            >
+              About
+            </Link>
+            <Link
+              to="/pool"
+              className="link"
+              onClick={() => setShowMenu(false)}
+            >
+              Contact
+            </Link>
             {/* <Link to="/" className="link">
       About
     </Link>
@@ -118,9 +135,13 @@ function Navbar() {
       )}
 
       <ul className="user-links">
+      <p className="dark-mode" onClick={() => setTheme(!theme)}>  Dark Mode </p>
+
         {user ? (
           <div className="username-logo">
+
             <div className="wrapper">
+
               <p>{username}</p>
               <img
                 src={`../icons/${favTeam}.svg`}
@@ -130,10 +151,10 @@ function Navbar() {
             </div>
 
             <div className="burger-desktop">
-              <GiHamburgerMenu
+              {/* <GiHamburgerMenu
                 onClick={() => setShowUserMenu(!showUserMenu)}
                 className="desktop-burger"
-              />
+              /> */}
             </div>
 
             <div className={showUserMenu ? "user-menu" : "hide"}>
@@ -160,7 +181,7 @@ function Navbar() {
           className="nav-logo-mobile"
           alt=""
         />
-        <GiHamburgerMenu onClick={() => setShowMenu(!showMenu)} />
+        {/* <GiHamburgerMenu onClick={() => setShowMenu(!showMenu)} /> */}
       </div>
     </div>
   );

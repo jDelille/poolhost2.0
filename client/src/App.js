@@ -5,21 +5,24 @@ import Navbar from "./components/Navbar/Navbar";
 import Router from "./Router";
 import { UserContextProvider } from "../src/context/UserContext";
 import axios from "axios";
-
-import React, {useState} from 'react'
+import styled, { ThemeProvider } from "styled-components";
+import { lightTheme, darkTheme, GlobalStyles } from "./Themes.js";
+import React, { useState } from "react";
 
 axios.defaults.withCredentials = true;
 
 function App() {
-
+  const [theme, setTheme] = useState(true);
+  const StyledApp = styled.div``;
   return (
-
-      <UserContextProvider>
-        <div className="App">
-          <Router />
-        </div>
-      </UserContextProvider>
-
+    <UserContextProvider>
+      <ThemeProvider theme={theme ? lightTheme : darkTheme}>
+        <GlobalStyles />
+        <StyledApp className="App">
+          <Router theme={theme} setTheme={setTheme} />
+        </StyledApp>
+      </ThemeProvider>
+    </UserContextProvider>
   );
 }
 

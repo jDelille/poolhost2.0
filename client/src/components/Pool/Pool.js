@@ -14,8 +14,8 @@ function Pool() {
     console.log(poolData);
   }
 
-  let labelArray = [...data]
-  console.log(labelArray)
+  // let labelArray = [...data]
+  // console.log(labelArray)
 
   // delete picks once every day
   useEffect(() => {
@@ -38,12 +38,14 @@ function Pool() {
   getUser();
 
   useEffect(() => {
-    fetch(`${domain}/games`)
+    fetch(`${domain}/schedule`)
       .then((res) => res.json())
       .then((data) => {
-        setData(data.scoreboard.games);
+        setData(data[1].eventList);
       });
   }, []);
+
+  console.log(data)
 
   useEffect(() => {
     getAllPicks();
@@ -57,12 +59,12 @@ function Pool() {
             <p> Player </p>
           </div>
 
-          {labelArray.map((item) => {
+          {data.map((item) => {
             return (
               <div className="label-box">
-                <p> {item.homeTeam.teamTricode}</p>
+                <p> {item.homeEventResult.competitor.shortName}</p>
                 <p> vs</p>
-                <p> {item.awayTeam.teamTricode}</p>
+                <p> {item.awayEventResult.competitor.shortName}</p>
               </div>
             );
           })}
@@ -94,6 +96,7 @@ function Pool() {
         })}
       </div>
     </div>
+    
   );
 }
 

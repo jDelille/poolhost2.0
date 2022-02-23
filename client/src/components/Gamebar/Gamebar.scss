@@ -1,12 +1,9 @@
 .gamebar {
- width: 100%;
- border: 1px solid white;
- box-shadow: -4px 0px 3px 0px rgba(0,0,0,.2);
- background-color: red;
+ width: 80%;
  z-index: 9989;
  display: flex;
- justify-content: center;
- background-color: #ffffff;
+ height: 120px;
+ margin-left: auto;
  .date-picker,
  .scroller {
   border: 1px solid lightgray;
@@ -38,25 +35,23 @@
  }
  .gamebar-contents {
   display: flex;
-  height: 90px;
   overflow-x: scroll;
   transition: all 100ms ease-in-out;
   width: 1440px;
   align-items: center;
-  justify-content: center;
+  height: 100px;
+  
   &::-webkit-scrollbar {
    display: none;
   }
   .gamebar-box {
    &:nth-child(1) {
-    border-left: 1px solid lightgray;
    }
    border-right: 1px solid lightgray;
 
    height: 100%;
    min-width: 180px;
    padding: 0.5rem 0.5rem;
-   color:  black;
    position: relative;
    display: flex;
    flex-direction: column;
@@ -74,8 +69,9 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    font-size: 0.85rem;
-    font-weight: 500;
+    font-size: 1rem;
+    font-weight: 400;
+    
     .abbr {
      width: 100%;
      display: flex;
@@ -84,6 +80,14 @@
     .logo {
      max-width: 30px;
      margin-right: 0.25rem;
+    }
+    .record, 
+    .score {
+     font-size: 0.8rem;
+     width: 100px;
+     display: flex;
+     align-items: center;
+     justify-content: flex-end;
     }
    }
   }

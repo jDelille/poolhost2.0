@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
 import Login from "./components/Auth/Login";
 import Register from "./components/Auth/Register";
@@ -8,13 +8,13 @@ import Gamebar from "./components/Gamebar/Gamebar";
 import Pool from "./components/Pool/Pool";
 import Home from "./components/Home/Home";
 
-function Router() {
+function Router({theme, setTheme}) {
   return (
     <BrowserRouter>
       <Switch>
         <Route exact path="/">
           <Gamebar />
-          <Navbar />
+          <Navbar theme={theme} setTheme={setTheme} />
           <Home />
         </Route>
         <Route exact path="/picks">

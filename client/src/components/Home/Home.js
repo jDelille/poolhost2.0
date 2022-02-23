@@ -12,7 +12,7 @@ function Home() {
         <h1> Daily NBA Pick'em </h1>
         <p> Make your picks and compete</p>
       </div>
-      <div className="btn-container">
+      <div className="btn-container-home">
         {user ? (
           <>
             <Link to="/picks" className="link btn">

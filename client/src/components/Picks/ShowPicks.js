@@ -23,9 +23,9 @@ function ShowPicks({ picks, getPicks, editPicks, data }) {
             {data.map((item) => {
               return (
                 <div className="labels-box">
-                  <p> {item.homeTeam.teamTricode}</p>
+                  <p> {item.homeEventResult.competitor.shortName}</p>
                   <p> vs</p>
-                  <p> {item.awayTeam.teamTricode}</p>
+                  <p> {item.awayEventResult.competitor.shortName}</p>
                 </div>
               );
             })}
