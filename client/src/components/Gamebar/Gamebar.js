@@ -13,6 +13,8 @@ function Gamebar() {
       });
   }, []);
 
+  console.log(data)
+
 
   return (
     <div className="gamebar">

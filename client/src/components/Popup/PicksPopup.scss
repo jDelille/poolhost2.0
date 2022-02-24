@@ -59,3 +59,23 @@
     }
   }
 }
+
+
+@media only screen and (max-width: 900px) {
+
+.popup-container {
+  width: 100%;
+  position: absolute;
+  left: 0;
+  padding: 1rem 1rem;
+  height: 85vh;
+  justify-content: flex-start;
+  .popup-content {
+    height: 80%;
+    .chosen-picks {
+      flex-wrap: wrap;
+      
+    }
+  }
+}
+}

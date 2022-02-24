@@ -12,7 +12,7 @@ import React, { useState } from "react";
 axios.defaults.withCredentials = true;
 
 function App() {
-  const [theme, setTheme] = useState(true);
+  const [theme, setTheme] = useState(false);
   const StyledApp = styled.div``;
   return (
     <UserContextProvider>

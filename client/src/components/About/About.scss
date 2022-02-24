@@ -1,0 +1,14 @@
+.about-page {
+ height: calc(100% - 130px);
+ width: calc(100% - 19%);
+ padding: 2rem;
+ margin-left: auto;
+ h1 {
+  font-size: 4rem;
+ }
+ p {
+  font-size: 1.4rem;
+  width: 80%;
+  margin-top: 2rem;
+ }
+}

@@ -7,7 +7,7 @@ import axios from "axios";
 import { GiHamburgerMenu } from "react-icons/gi";
 import { useHistory } from "react-router-dom";
 
-function Navbar({theme, setTheme}) {
+function Navbar(theme, setTheme) {
   const { user } = useContext(UserContext);
 
   const history = useHistory();
@@ -32,11 +32,16 @@ function Navbar({theme, setTheme}) {
   const [showMenu, setShowMenu] = useState(false);
   const [showUserMenu, setShowUserMenu] = useState(false);
 
+  // function darkMode() {
+  //   setTheme(!theme)
+  // }
+
   return (
     <div className="navbar">
       <div className="brand">
         <div className="brand-content">
-          <h1> Poolhost </h1>
+          <h1> Socklord </h1>
+          <p> Pick'em Pool</p>
         </div>
       </div>
       {showMenu ? (
@@ -59,7 +64,7 @@ function Navbar({theme, setTheme}) {
             >
               Pool
             </Link>
-           
+
             {/* <Link to="/" className="link" onClick={() => setShowMenu(false)}>
               About
             </Link>
@@ -93,7 +98,6 @@ function Navbar({theme, setTheme}) {
                 >
                   Login
                 </Link>
-
               </>
             )}
           </ul>
@@ -111,19 +115,22 @@ function Navbar({theme, setTheme}) {
               Pool
             </Link>
             <Link
-              to="/pool"
+              to="/about"
               className="link"
               onClick={() => setShowMenu(false)}
             >
               About
             </Link>
-            <Link
+            {/* <Link
               to="/pool"
               className="link"
               onClick={() => setShowMenu(false)}
             >
               Contact
             </Link>
+            <Link to="/profile" className="link">
+              Profile
+            </Link> */}
             {/* <Link to="/" className="link">
       About
     </Link>
@@ -135,34 +142,39 @@ function Navbar({theme, setTheme}) {
       )}
 
       <ul className="user-links">
-      <p className="dark-mode" onClick={() => setTheme(!theme)}>  Dark Mode </p>
+        {/* <p className="dark-mode" onClick={() => setTheme(true)}>
+          Dark Mode
+        </p> */}
 
         {user ? (
-          <div className="username-logo">
+          <>
+            <button className="logout-btn-nav" onClick={logOut}>
+              Log out
+            </button>
+            <div className="username-logo">
+              <div className="wrapper">
+                <p>{username}</p>
+                <img
+                  src={`../icons/${favTeam}.svg`}
+                  className="nav-logo"
+                  alt=""
+                />
+              </div>
 
-            <div className="wrapper">
+              <div className="burger-desktop">
+                {/* <GiHamburgerMenu
+      onClick={() => setShowUserMenu(!showUserMenu)}
+      className="desktop-burger"
+    /> */}
+              </div>
 
-              <p>{username}</p>
-              <img
-                src={`../icons/${favTeam}.svg`}
-                className="nav-logo"
-                alt=""
-              />
+              <div className={showUserMenu ? "user-menu" : "hide"}>
+                <button className="logout-btn btn" onClick={logOut}>
+                  Log out
+                </button>
+              </div>
             </div>
-
-            <div className="burger-desktop">
-              {/* <GiHamburgerMenu
-                onClick={() => setShowUserMenu(!showUserMenu)}
-                className="desktop-burger"
-              /> */}
-            </div>
-
-            <div className={showUserMenu ? "user-menu" : "hide"}>
-              <button className="logout-btn btn" onClick={logOut}>
-                Log out
-              </button>
-            </div>
-          </div>
+          </>
         ) : (
           <>
             <Link to="/register" className="link">
@@ -176,12 +188,12 @@ function Navbar({theme, setTheme}) {
       </ul>
 
       <div className="burger">
-        <img
+        {/* <img
           src={`../icons/${favTeam}.svg`}
           className="nav-logo-mobile"
           alt=""
-        />
-        {/* <GiHamburgerMenu onClick={() => setShowMenu(!showMenu)} /> */}
+        /> */}
+        <GiHamburgerMenu onClick={() => setShowMenu(!showMenu)} />
       </div>
     </div>
   );

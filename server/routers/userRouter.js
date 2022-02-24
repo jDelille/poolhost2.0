@@ -146,6 +146,49 @@ router.get("/loggedIn", (req, res) => {
   }
 });
 
+router.put("/:id", async (req, res) => {
+  try {
+    const { username } = req.body;
+    const userId = req.params.id;
+
+    // validation
+
+    // if (!description && !code) {
+    //   return res
+    //     .status(400)
+    //     .json({
+    //       errorMessage: "You need to enter a description or some code.",
+    //     });
+    // }
+
+    if (!userId)
+      return res.status(400).json({
+        errorMessage:
+          "User ID not given. Please contact the developer. Thank you.",
+      });
+
+    const originalUser = await User.findById(userId);
+    if (!originalUser)
+      return res
+        .status(400)
+        .json({ errorMessage: "No User with this ID was found :( " });
+
+    if (originalUser.user.toString() !== req.user)
+      return res.status(401).json({ errorMessage: "Unauthorized." });
+
+    originalUser.username = username;
+    // originalUser.description = description;
+    // originalUser.code = code;
+    // originalUser.category = category;
+
+    const savedUser = await originalUser.save();
+
+    res.json(savedUser);
+  } catch (err) {
+    res.status(500).send();
+  }
+});
+
 router.get("/logout", (req, res) => {
   try {
     res

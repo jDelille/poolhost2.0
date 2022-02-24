@@ -9,7 +9,6 @@
     width: 30%;
     height: 100%;
     padding: 0 1rem;
-    
     .content-date {
       font-size: 1.1rem;
       span {
@@ -21,6 +20,47 @@
       display: flex;
       flex-direction: column;
       gap: 1rem;
+    }
+    .filter-label {
+      color: black;
+      margin-top: 2rem;
+      
+    }
+    .filters {
+      margin-top: 0.25rem;
+      border-top: 1px solid rgb(214, 211, 211);
+     
+      width: 20%;
+      height: 110px;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      .filter-row {
+        display: flex;
+        align-items: center;
+        .check-box,
+        .checked {
+          border: 2px solid #f75940;
+          width: 20px;
+          height: 20px;
+          margin-right: 0.5rem;
+          border-radius: 4px;
+          cursor: pointer;
+          color: white;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        }
+        .checked {
+          background-color: #f75940;
+        }
+      }
+      p {
+      }
+      input {
+        color: white;
+        margin: 0.4rem;
+      }
     }
   }
   .title {
@@ -37,7 +77,7 @@
     margin: 1rem 0;
     background-color: #fff;
     width: 100%;
-    
+
     .btn {
       width: 250px;
       padding: 10px 30px;
@@ -65,7 +105,6 @@
       margin: 2rem 0;
       align-items: center;
       overflow-y: scroll;
-
       .logos {
         width: 100%;
         display: flex;
@@ -84,12 +123,13 @@
     width: 70%;
     display: flex;
     flex-direction: column;
-    overflow-y: scroll;
+    overflow-y: auto;
     height: 100%;
     position: absolute;
     right: 0;
     padding: 1rem 0;
     position: relative;
+
     /* width */
     &::-webkit-scrollbar {
       width: 10px;
@@ -106,7 +146,7 @@
     }
     /* Handle on hover */
     &::-webkit-scrollbar-thumb:hover {
-      background: #b30000;
+      background: #1b49c9;
     }
     .games-box {
       // each game box stuff
@@ -126,13 +166,24 @@
 
           display: flex;
           align-items: center;
-          justify-content: space-evenly;
-          padding: 1rem;
+          padding: 1rem 1.5rem;
           box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2);
           border-radius: 5px;
           &:hover {
             box-shadow: none;
             transition: all 100ms ease-in-out;
+          }
+          .losing {
+            color: #ff304f;
+          }
+          .winning {
+            color: #2cb978;
+          }
+          .favorite {
+            color: #2cb978;
+          }
+          .underdog {
+            color: #f75940;
           }
           cursor: pointer;
           input {
@@ -145,7 +196,7 @@
             align-items: center;
             width: 20%;
             justify-content: center;
-            margin-right: 0.5rem;
+
             .team-logo {
               max-width: 50px;
             }
@@ -168,6 +219,8 @@
             display: flex;
             justify-content: center;
             align-items: center;
+            width: 20%;
+            margin-left: auto;
             p {
               font-size: 0.85rem;
             }
@@ -179,6 +232,7 @@
         }
         .highlight {
           background: #ffffaa;
+          color: black;
         }
 
         .game-info {
@@ -204,9 +258,18 @@
 
 @media only screen and (min-width: 1920px) {
   .hero {
+    padding: 0 1rem;
+    .content {
+      padding-right: 5rem;
+    }
     .games-container {
       .games-box {
-        width: 50%;
+        width: 80%;
+      }
+      .btn-container {
+        height: 100%;
+        width: 80%;
+        top: 1rem;
       }
     }
   }
@@ -217,9 +280,14 @@
     width: 100%;
     padding: 2rem 0;
     position: relative;
+    .content {
+      display: none;
+    }
     .games-container {
       width: 100%;
       height: 100%;
+      margin-top: 1rem;
+      padding: 1rem 0;
       .games-box {
         width: 100%;
         display: flex;
@@ -235,7 +303,7 @@
           .box {
             justify-content: space-evenly;
             width: 48%;
-            background: red;
+            z-index: 90;
             .team-id {
               display: none;
             }

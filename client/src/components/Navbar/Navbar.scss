@@ -17,9 +17,13 @@
     .brand-content {
       height: 90px;
       display: flex;
-      align-items: center;
       width: 90%;
       height: 100%;
+      flex-direction: column;
+      line-height: 1.8rem;
+      p {
+        font-size: 1.2rem;
+      }
     }
   }
 
@@ -46,6 +50,11 @@
     gap: 1rem;
     position: relative;
     flex-direction: column;
+    margin-bottom: 1rem;
+    .logout-btn-nav {
+      text-align: left;
+      width: 100%;
+    }
     .dark-mode {
       text-align: left;
       width: 100%;
@@ -91,8 +100,9 @@
       }
     }
     .link {
-      color: white;
       text-decoration: none;
+      width: 100%;
+      font-weight: 400;
     }
   }
 
@@ -107,13 +117,20 @@
   .navbar {
     display: flex;
     margin: 0;
-    padding: 0 1rem;
     width: 100%;
     align-items: center;
     height: 65px;
-    
+    position: absolute;
+    top: 120px;
+    justify-content: space-between;
+    flex-direction: row;
+    background-color: #fff;
+    border-bottom: 2px solid var(--secondary-color);
+
     .brand {
       width: 40%;
+      height: 100%;
+      margin: 0;
     }
     .nav-links {
       display: none;
@@ -127,7 +144,10 @@
       font-size: 1.6rem;
       display: flex;
       align-items: center;
-      justify-content: flex-end;
+      height: 100%;
+      width: 25%;
+      justify-content: center;
+      font-size: 2rem;
     }
     .nav-logo-mobile {
       display: block;
@@ -138,10 +158,10 @@
       width: 100%;
       position: absolute;
       left: 0;
-      height: 50%;
-      top: 155px;
-      background-color: #fff;
-      z-index: 9999;
+      height: 300px;
+      top: 64px;
+      z-index: 99999;
+      background-color: #FFF;
       display: flex;
       flex-direction: column;
       transition: all 100ms ease-in-out;

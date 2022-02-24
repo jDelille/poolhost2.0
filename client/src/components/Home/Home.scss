@@ -4,55 +4,78 @@
   margin-left: auto;
   display: flex;
   height: calc(100% - 140px);
-  flex-direction: column;
-  .home-text {
+  padding: 1rem;
+  .left {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
     height: 70%;
-    position: relative;
-    h1 {
-      font-size: 3rem;
-    }
-    p {
-      font-size: 2rem;
-    }
-    .how-to {
-      position: absolute;
-      bottom: 0;
-      margin-top: 1rem;
-      p {
-        margin-left: -1.1rem;
+    .home-text {
+      position: relative;
+      h1 {
+        font-size: 3rem;
       }
-      ol li {
-        font-size: 1.4rem;
-        margin-left: 1rem;
+      p {
+        font-size: 2rem;
+      }
+      .how-to {
+        position: absolute;
+        bottom: 0;
         margin-top: 1rem;
+        p {
+          margin-left: -1.1rem;
+        }
+        ol li {
+          font-size: 1.4rem;
+          margin-left: 1rem;
+          margin-top: 1rem;
+        }
+      }
+    }
+    .btn-container-home {
+      display: flex;
+      width: 70%;
+      height: 40%;
+      align-items: center;
+      margin-top: 2rem;
+      justify-content: flex-start;
+
+
+      .btn {
+        width: 250px;
+        padding: 10px 30px;
+        font-size: 1rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-decoration: none;
+        box-shadow: var(--box-shadow);
+        border-radius: 4px;
+        background-color: var(--black);
+        margin-right: 1rem;
+        color: white;
+        cursor: pointer;
+        border: 0;
+        &:hover {
+          box-shadow: none;
+          border: 1px solid lightgray;
+        }
       }
     }
   }
-  .btn-container-home {
-    display: flex;
+  .right {
+    height: 100%;
     width: 70%;
-    height: 40%;
-    height: 0px;
+    position: relative;
+    display: flex;
     align-items: center;
-    margin-top: 2rem;
-    .btn {
-      width: 250px;
-      padding: 10px 30px;
-      font-size: 1rem;
+    .frame {
+      width: 100%;
+      height: 70%;
       display: flex;
       align-items: center;
-      justify-content: center;
-      text-decoration: none;
-      box-shadow: var(--box-shadow);
-      border-radius: 4px;
-      background-color: var(--black);
-      margin-right: 1rem;
-      color: white;
-      cursor: pointer;
-      border: 0;
-      &:hover {
-        box-shadow: none;
-        border: 1px solid lightgray;
+      img {
+        max-width: 110%;
       }
     }
   }
@@ -60,15 +83,24 @@
 
 @media only screen and (max-width: 900px) {
   .home-page {
-    padding: 1rem;
     text-align: center;
     text-transform: uppercase;
-    .home-text {
-      p {
-        font-size: 1.2rem;
-        margin-top: 2rem;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    .left {
+      .home-text {
+        text-align: left;
+        width: 100%;
+        h1 {
+          font-size: 2.2rem;
+        }
+        p {
+          font-size: 1.4rem;
+        }
       }
     }
+    
 
     .btn-container {
       display: flex;

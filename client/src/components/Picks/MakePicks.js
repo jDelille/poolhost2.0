@@ -6,10 +6,12 @@ function MakePicks({
   data,
   handleSubmit,
   addPicks,
-  array,
-  resetPicks,
   pick,
   setPick,
+  showRecord,
+  showStreak,
+  showMoney,
+  showFav,
 }) {
   const [locked, setLocked] = useState(true);
   const [popUp, setPopUp] = useState(false);
@@ -58,7 +60,30 @@ function MakePicks({
                     <p> Home </p>
                   </div>
                   <div className="record">
-                    <p>{item.homeEventResult.competitor.recordOverall}</p>
+                    {showRecord ? (
+                      <p>{item.homeEventResult.competitor.recordOverall}</p>
+                    ) : showStreak ? (
+                      <p
+                        className={
+                          item.homeEventResult.competitor.streak[0] === "L"
+                            ? "losing"
+                            : "winning"
+                        }
+                      >
+                        {item.homeEventResult.competitor.streak}
+                      </p>
+                    ) : showFav ? (
+                      item.eventOdds.favoriteCompetitorId ===
+                      item.homeCompetitorId ? (
+                        <p className="favorite"> Favorite </p>
+                      ) : (
+                        <p className="underdog"> Underdog </p>
+                      )
+                    ) : showMoney ? (
+                      <p>{item.eventOdds.homeMoney}</p>
+                    ) : (
+                      <p> nothing </p>
+                    )}
                   </div>
                 </label>
 
@@ -93,7 +118,30 @@ function MakePicks({
                     <p> Home </p>
                   </div>
                   <div className="record">
-                    <p>{item.awayEventResult.competitor.recordOverall}</p>
+                    {showRecord ? (
+                      <p>{item.awayEventResult.competitor.recordOverall}</p>
+                    ) : showStreak ? (
+                      <p
+                        className={
+                          item.awayEventResult.competitor.streak[0] === "L"
+                            ? "losing"
+                            : "winning"
+                        }
+                      >
+                        {item.awayEventResult.competitor.streak}
+                      </p>
+                    ) : showFav ? (
+                      item.eventOdds.favoriteCompetitorId ===
+                      item.awayCompetitorId ? (
+                        <p className="favorite"> Favorite </p>
+                      ) : (
+                        <p className="underdog"> Underdog </p>
+                      )
+                    ) : showMoney ? (
+                      <p>{item.eventOdds.awayMoney}</p>
+                    ) : (
+                      <p> nothing </p>
+                    )}
                   </div>
                 </label>
               </div>
@@ -102,19 +150,18 @@ function MakePicks({
           );
         })}
         <div className="btn-container">
-        <button
-          onClick={() => {
-            handleSubmit();
-            setLocked(false);
-            setPopUp(true);
-          }}
-          className="btn"
-        >
-          Add Picks
-        </button>
+          <button
+            onClick={() => {
+              handleSubmit();
+              setLocked(false);
+              setPopUp(true);
+            }}
+            className="btn"
+          >
+            Add Picks
+          </button>
+        </div>
       </div>
-      </div>
-      
     </>
   );
 }

@@ -17,7 +17,6 @@ export const darkTheme = {
 export const GlobalStyles = createGlobalStyle`
 .App,
 .hero,
-.navbar,
 .gamebar
  {
  background-color: ${(props) => props.theme.BG};
