@@ -2,6 +2,8 @@
 
 ## Socklord Pick'em Pool is a website I created that allows a user to make daily NBA picks and compete against other users. 
 
+## Javascript, React, MongoDB, Bcrypt, JWT, SCSS, Node.js
+
 ## This project is a recreation of my capstone project. There was many things I didn't get right with my capstone and with more experience under my belt I wanted to do the project justice. 
 ### This project was created using React, SCSS, Javascript, MongoDB, JWT, Bcryptjs, and several API's.
 
